@@ -1,15 +1,14 @@
 import streamlit as st
 import numpy as np
-import sympy as sp
-
 import matplotlib.pyplot as plt
+import sympy as sp
 
 # Streamlit app title
 st.title("Algebraic Function and Derivative Plotter")
 
 # User input for algebraic function
 st.subheader("Enter an Algebraic Function")
-user_input = st.text_input("Function (in terms of x):")
+user_input = st.text_input("Function (in terms of x):", value="x**2 + 3*x + 2")
 
 # Sympy symbols and function parsing
 x = sp.symbols('x')
@@ -34,7 +33,7 @@ try:
     plt.plot(x_vals, y_der_vals, label="Derivative", linestyle='--')
     plt.xlabel('x')
     plt.ylabel('y')
-    plt.title(f'Function: {sp.pretty(function).replace("**", "^")} and its Derivative: {user_input}')
+    plt.title(f'Function: {sp.pretty(function)} and its Derivative')
     plt.legend()
     plt.grid(True)
     st.pyplot(plt)
